@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.26)
-project(MyLib)
+
+set(LIB_NAME MyLib)
+project(${LIB_NAME})
 
 include(GNUInstallDirs)
 
-set(LIB_NAME MyLib)
 set(PUBLIC_HEADERS
     MyLibPublic.h
 )
@@ -15,7 +16,7 @@ set(SOURCES
 )
 
 add_library(${LIB_NAME} STATIC ${SOURCES})
-set_target_properties(${LIB_NAME} PROPERTIES PUBLIC_HEADER "${PUBLIC_HEADERS}") # headers to export while instalation
+set_target_properties(${LIB_NAME} PROPERTIES PUBLIC_HEADER "${PUBLIC_HEADERS}") # headers to export while installation
 
 # To allow use target headers in this repo
 target_include_directories(${LIB_NAME}
@@ -25,6 +26,6 @@ target_include_directories(${LIB_NAME}
 )
 
 install(TARGETS ${LIB_NAME}
-        EXPORT SuperCoolLib
+        EXPORT ${TARGET_EXPORT_NAME}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${LIB_NAME}) #force locate public headers in subfolder
