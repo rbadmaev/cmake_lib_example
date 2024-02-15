@@ -3,8 +3,6 @@ cmake_minimum_required(VERSION 3.26)
 set(LIB_NAME MyLib)
 project(${LIB_NAME})
 
-include(GNUInstallDirs)
-
 add_subdirectory(details)
 
 set(PUBLIC_HEADERS
@@ -29,6 +27,6 @@ target_include_directories(${LIB_NAME}
 )
 
 install(TARGETS ${LIB_NAME}
-        EXPORT ${TARGET_EXPORT_NAME}
+        EXPORT ${TARGETS_EXPORT_NAME}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${LIB_NAME}) #force locate public headers in subfolder

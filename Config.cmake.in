@@ -1,5 +1,5 @@
 @PACKAGE_INIT@
 
-include("${CMAKE_CURRENT_LIST_DIR}/MyLibTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/SuperCoolLibTargets.cmake")
 
-check_required_components(MyLib)
+check_required_components(SuperCoolLib)
