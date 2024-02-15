@@ -23,6 +23,6 @@ target_include_directories(${DETAILS_LIB_NAME}
 )
 
 install(TARGETS ${DETAILS_LIB_NAME}
-        EXPORT SuperCoolLib::Details
+        EXPORT ${TARGETS_EXPORT_NAME}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${LIB_NAME}) #force locate public headers in subfolder
