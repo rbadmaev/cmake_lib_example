@@ -16,8 +16,8 @@ set(SOURCES
 )
 
 add_library(${LIB_NAME} STATIC ${SOURCES})
-set_target_properties(${LIB_NAME} PROPERTIES PUBLIC_HEADER "${PUBLIC_HEADERS}") # headers to export while installation
 target_link_libraries(${LIB_NAME} PRIVATE Details)
+set_target_properties(${LIB_NAME} PROPERTIES PUBLIC_HEADER "${PUBLIC_HEADERS}") # headers to export while installation
 
 # To allow use target headers in this repo
 target_include_directories(${LIB_NAME}
