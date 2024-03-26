@@ -9,6 +9,7 @@ buildsDir="$testDir/build"
 @test "local build" {
     buildDir="$buildsDir/local"
     installPath="$buildDir/install"
+    rm -rf $installPath/*
 
     mkdir -p $buildDir/library
     cd $buildDir/library && rm -rf ./*
@@ -25,6 +26,7 @@ buildsDir="$testDir/build"
 @test "movable install" {
     buildDir="$buildsDir/movable"
     movedInstallPath="$buildDir/install"
+    rm -rf $movedInstallPath
 
     mkdir -p $buildDir/library
     originalInstallPath="$buildDir/library/install"
