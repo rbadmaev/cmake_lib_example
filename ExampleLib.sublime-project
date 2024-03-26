@@ -36,5 +36,12 @@
     },
     "build_systems":
     [
+        {
+            "name": "run tests",
+            "shell": true,
+            "cmd": ["./tests.sh"],
+            "working_dir": "$project_path/tests",
+            "word_wrap": false
+        },
     ]
 }
