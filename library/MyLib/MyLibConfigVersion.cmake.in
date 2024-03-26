@@ -25,5 +25,12 @@ if (${PACKAGE_NAME} STREQUAL ${PACKAGE_FIND_NAME})
     else()
         set(PACKAGE_VERSION_UNSUITABLE, TRUE)
     endif()
+
+    set(MyLib_VERSION ${PACKAGE_VERSION})
+    set(MyLib_VERSION_MAJOR 1)
+    set(MyLib_VERSION_MINOR 0)
+    set(MyLib_VERSION_PATCH 0)
+    set(MyLib_VERSION_TWEAK 0)
+    set(MyLib_VERSION_COUNT 2)
 endif()
 
