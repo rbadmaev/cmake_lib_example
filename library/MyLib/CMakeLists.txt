@@ -30,5 +30,7 @@ install(TARGETS ${LIB_NAME}
         EXPORT SuperCoolLib
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${LIB_NAME}) #force locate public headers in subfolder
+
 configure_file(MyLibConfig.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/cmake/MyLibConfig.cmake @ONLY)
+configure_file(MyLibConfigVersion.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/cmake/MyLibConfigVersion.cmake @ONLY)
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/cmake DESTINATION .)
