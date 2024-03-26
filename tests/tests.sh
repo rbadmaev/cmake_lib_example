@@ -1,26 +1,42 @@
 #!/usr/bin/env bats
 
 testDir=`pwd`
-echo "testDir: $testDir"
 cd '..'
 srcDir=`pwd`
-echo "srcDir: $srcDir"
 cd $testDir
+buildsDir="$testDir/build"
 
 @test "local build" {
-    buildDir="$testDir/build"
-    echo "buildDir: $buildDir"
+    buildDir="$buildsDir/local"
     installPath="$buildDir/install"
-    echo "installPath: $installPath"
 
     mkdir -p $buildDir/library
-    cd $buildDir/library
+    cd $buildDir/library && rm -rf ./*
     cmake -DCMAKE_INSTALL_PREFIX=$installPath $srcDir/library
     cmake --build .
     cmake --install .
 
     mkdir -p $buildDir/client
-    cd $buildDir/client
+    cd $buildDir/client && rm -rf ./*
     cmake -DCMAKE_PREFIX_PATH=$installPath $srcDir/client
+    cmake --build .
+}
+
+@test "movable install" {
+    buildDir="$buildsDir/movable"
+    movedInstallPath="$buildDir/install"
+
+    mkdir -p $buildDir/library
+    originalInstallPath="$buildDir/library/install"
+    cd $buildDir/library && rm -rf ./*
+    cmake -DCMAKE_INSTALL_PREFIX=$originalInstallPath $srcDir/library
+    cmake --build .
+    cmake --install .
+
+    mv $originalInstallPath $movedInstallPath
+
+    mkdir -p $buildDir/client
+    cd $buildDir/client && rm -rf ./*
+    cmake -DCMAKE_PREFIX_PATH=$movedInstallPath $srcDir/client
     cmake --build .
 }
