@@ -31,6 +31,8 @@ install(TARGETS ${LIB_NAME}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${LIB_NAME}) #force locate public headers in subfolder
 
+# CMake package description is a two files: config and config version.
+# Use configure_file function to allow use cmake variable inside that files
 configure_file(MyLibConfig.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/cmake/MyLibConfig.cmake @ONLY)
 configure_file(MyLibConfigVersion.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/cmake/MyLibConfigVersion.cmake @ONLY)
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/cmake DESTINATION .)
