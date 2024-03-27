@@ -43,5 +43,12 @@
             "working_dir": "$project_path/tests",
             "word_wrap": false
         },
+        {
+            "name": "clean and run tests",
+            "shell": true,
+            "cmd": ["rm -rf $project_path/tests/build && ./tests.sh"],
+            "working_dir": "$project_path/tests",
+            "word_wrap": false
+        },
     ]
 }
