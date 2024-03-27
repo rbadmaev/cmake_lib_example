@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.26)
 project(SuperCoolLib)
 
+set(PACKAGE_CONFIGS_INSTALL_DIR cmake)
+
 add_subdirectory(MyLib)
 
 if (${UseTests})
