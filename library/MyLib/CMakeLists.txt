@@ -39,9 +39,9 @@ install(TARGETS ${LIB_NAME}
 include(CMakePackageConfigHelpers)
 
 configure_package_config_file(
-    MyLibConfig.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/cmake/MyLibConfig.cmake
-    INSTALL_DESTINATION ${PACKAGE_CONFIGS_INSTALL_DIR}
-    PATH_VARS INSTALL_INCLUDEDIR INSTALL_LIBDIR)
-configure_file(MyLibConfigVersion.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/cmake/MyLibConfigVersion.cmake @ONLY)
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/cmake DESTINATION .)
+    MyLibConfig.cmake.in # config template. Should contain imported target description
+    ${PACKAGE_CONFIGS_DIR}/MyLibConfig.cmake # path to store generated config
+    INSTALL_DESTINATION "${PACKAGE_CONFIGS_INSTALL_DIR}" # must be ${PACKAGE_CONFIGS_INSTALL_DIR} due to implicit contract
+    PATH_VARS INSTALL_INCLUDEDIR INSTALL_LIBDIR) # variables which can be used in template
+configure_file(MyLibConfigVersion.cmake.in ${PACKAGE_CONFIGS_DIR}/MyLibConfigVersion.cmake @ONLY)
+
