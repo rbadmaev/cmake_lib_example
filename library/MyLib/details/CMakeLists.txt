@@ -23,4 +23,4 @@ target_include_directories(${DETAILS_LIB_NAME}
 
 install(TARGETS ${DETAILS_LIB_NAME}
         DESTINATION ${INSTALL_LIBDIR}
-        PUBLIC_HEADER DESTINATION ${INSTALL_INCLUDEDIR}/${LIB_NAME}) #force locate public headers in subfolder
+        PUBLIC_HEADER DESTINATION ${INSTALL_INCLUDEDIR}/${PROJECT_NAME}) #force locate public headers in subfolder

@@ -11,4 +11,3 @@ foreach(LIB_FILE ${LIB_IMPORTEDS})
 endforeach()
 
 check_required_components(MyLib)
-

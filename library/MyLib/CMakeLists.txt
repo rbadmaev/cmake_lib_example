@@ -3,10 +3,10 @@ project(MyLib
     VERSION 1.0)
 
 include(GNUInstallDirs)
-
 # install each target to separate folder to avoid accidentally using files of another target
-set(INSTALL_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}/${CMAKE_INSTALL_INCLUDEDIR})
-set(INSTALL_LIBDIR ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}/${CMAKE_INSTALL_LIBDIR})
+set(INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME})
+set(INSTALL_INCLUDEDIR ${INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR})
+set(INSTALL_LIBDIR ${INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
 
 add_subdirectory(details)
 set(PUBLIC_HEADERS
@@ -42,7 +42,9 @@ configure_package_config_file(
     MyLibConfig.cmake.in # config template. Should contain imported target description
     ${PACKAGE_CONFIGS_DIR}/MyLibConfig.cmake # path to store generated config
     INSTALL_DESTINATION "${PACKAGE_CONFIGS_INSTALL_DIR}" # must be ${PACKAGE_CONFIGS_INSTALL_DIR} due to implicit contract
-    PATH_VARS INSTALL_INCLUDEDIR INSTALL_LIBDIR) # variables which can be used in template
+    PATH_VARS INSTALL_INCLUDEDIR INSTALL_LIBDIR # variables which can be used in template
+)
+
 write_basic_package_version_file(
     ${PACKAGE_CONFIGS_DIR}/MyLibConfigVersion.cmake # path to store generated config
     # VERSION x.y.z # defaulted to PROJECT_VERSION
