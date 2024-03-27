@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
-project(SuperCoolLib)
+project(SuperCoolLib
+        VERSION 1.0)
 
 # implicit contract:
 # 1. packages should store their configs in ${PACKAGE_CONFIGS_DIR}

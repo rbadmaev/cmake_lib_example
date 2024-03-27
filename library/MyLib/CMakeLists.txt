@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
-project(MyLib)
+project(MyLib
+    VERSION 1.0)
 
 include(GNUInstallDirs)
 
@@ -43,5 +44,8 @@ configure_package_config_file(
     ${PACKAGE_CONFIGS_DIR}/MyLibConfig.cmake # path to store generated config
     INSTALL_DESTINATION "${PACKAGE_CONFIGS_INSTALL_DIR}" # must be ${PACKAGE_CONFIGS_INSTALL_DIR} due to implicit contract
     PATH_VARS INSTALL_INCLUDEDIR INSTALL_LIBDIR) # variables which can be used in template
-configure_file(MyLibConfigVersion.cmake.in ${PACKAGE_CONFIGS_DIR}/MyLibConfigVersion.cmake @ONLY)
+write_basic_package_version_file(
+    ${PACKAGE_CONFIGS_DIR}/MyLibConfigVersion.cmake # path to store generated config
+    # VERSION x.y.z # defaulted to PROJECT_VERSION
+    COMPATIBILITY SameMinorVersion)
 
