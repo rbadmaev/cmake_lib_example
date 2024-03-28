@@ -23,4 +23,9 @@ target_include_directories(${PROJECT_NAME}
                            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
 )
 
-exportTarget(${PROJECT_NAME})
+# Implicit dependency.
+# There is supposed that:
+#  - exportPackage.cmake already included
+#  - variable PACKAGE_NAME is exists
+#  - package with name PACKAGE_NAME already created.
+exportTarget(${PACKAGE_NAME} ${PROJECT_NAME})
