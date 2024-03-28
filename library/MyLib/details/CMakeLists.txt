@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 
-set(DETAILS_LIB_NAME Details)
+set(DETAILS_LIB_NAME MyLibDetails)
 set(PUBLIC_HEADERS
     DetailsPublic.h
 )
@@ -21,6 +21,4 @@ target_include_directories(${DETAILS_LIB_NAME}
                            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
 )
 
-install(TARGETS ${DETAILS_LIB_NAME}
-        DESTINATION ${INSTALL_LIBDIR}
-        PUBLIC_HEADER DESTINATION ${INSTALL_INCLUDEDIR}/${PROJECT_NAME}) #force locate public headers in subfolder
+exportTarget(${DETAILS_LIB_NAME})
