@@ -1,16 +1,17 @@
 include(GNUInstallDirs)
 
 
-
 function(_getPackagePaths PACKAGE_NAME)
     set(PACKAGE_PARTS_CONFIGS_DIR "${CMAKE_BINARY_DIR}/${PACKAGE_NAME}_cmake_parts" PARENT_SCOPE)
     set(PACKAGE_CONFIGS_INSTALL_DIR cmake PARENT_SCOPE)
 endfunction()
 
+
 function(createPackage PACKAGE_NAME PACKAGE_VERSION)
     _getPackagePaths(${PACKAGE_NAME})
     file(WRITE "${PACKAGE_PARTS_CONFIGS_DIR}/version" "${PACKAGE_VERSION}")
 endfunction()
+
 
 function(exportTarget PACKAGE_NAME TARGET_NAME)
     _getPackagePaths(${PACKAGE_NAME})
